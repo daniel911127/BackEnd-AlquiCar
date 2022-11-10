@@ -16,22 +16,19 @@ module.exports = {
     try {
       const userData = req.body;
       const existingUser = await User.findOne({ email: userData.email });
-      console.log('log1', existingUser);
+
       if (existingUser) {
         throw new Error('El email ya esta registrado');
       }
-      console.log('log2');
 
       const encPassword = await bcrypt.hash(userData.password, 10);
-      console.log('log3');
+
       const user = await User.create({ ...userData, password: encPassword });
-      console.log('log4');
 
       const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
         expiresIn: 60 * 60 * 24,
       });
 
-      console.log('log5');
       res
         .status(201)
         .json({ message: 'User created successfully', data: { token } });

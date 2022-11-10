@@ -7,7 +7,7 @@ const userSchema = new Schema(
     rol: {
       type: String,
       enum: ['user', 'admin'],
-      required: [true, 'el campo nombre es requerido'],
+      required: [true, 'el campo rol es requerido'],
     },
     name: {
       type: String,

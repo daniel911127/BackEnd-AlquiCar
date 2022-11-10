@@ -31,11 +31,6 @@ const carSchema = new Schema(
       default: true,
       required: [true, 'el campo es requerido'],
     },
-    admin: {
-      type: Schema.Types.ObjectId,
-      ref: 'Admin',
-      required: true,
-    },
     bookings: {
       type: [
         {

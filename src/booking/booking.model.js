@@ -13,11 +13,6 @@ const bookingSchema = new Schema(
       ref: 'Car',
       required: true,
     },
-    admin: {
-      type: Schema.Types.ObjectId,
-      ref: 'Admin',
-      required: true,
-    },
     comments: {
       type: [
         {

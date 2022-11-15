@@ -12,6 +12,7 @@ const carSchema = new Schema(
     },
     bodyWork: {
       type: String,
+      enum: ['small', 'medium', 'big'],
       required: [true, 'el campo es requerido'],
     },
     brand: {
@@ -30,6 +31,10 @@ const carSchema = new Schema(
       type: Boolean,
       default: true,
       required: [true, 'el campo es requerido'],
+    },
+    photo: {
+      type: String,
+      required: [false, 'el campo no es requerido'],
     },
     bookings: {
       type: [

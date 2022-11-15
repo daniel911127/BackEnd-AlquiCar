@@ -3,6 +3,11 @@ const { Schema, model } = require('mongoose');
 const bookingSchema = new Schema(
   {
     date: [],
+    isPaid: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',

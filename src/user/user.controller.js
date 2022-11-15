@@ -29,9 +29,21 @@ module.exports = {
         expiresIn: 60 * 60 * 24,
       });
 
-      res
-        .status(201)
-        .json({ message: 'User created successfully', data: { token } });
+      res.status(201).json({
+        message: 'User created successfully',
+        data: {
+          dataUser: {
+            rol: user.rol,
+            email: user.email,
+            name: user.name,
+            lastname: user.lastname,
+            identification: user.identification,
+            driverLicense: user.driverLicense,
+            email: user.email,
+          },
+          token,
+        },
+      });
     } catch (error) {
       res
         .status(400)
@@ -91,9 +103,18 @@ module.exports = {
       const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
         expiresIn: 60 * 60 * 24,
       });
-      return res
-        .status(201)
-        .json({ message: 'Login successfully', data: { email, token } });
+      return res.status(200).json({
+        message: 'Login successfully',
+        data: {
+          dataUser: {
+            email: user.email,
+            rol: user.rol,
+            name: user.name,
+            lastname: user.lastname,
+          },
+          token,
+        },
+      });
     } catch (err) {
       return res
         .status(400)

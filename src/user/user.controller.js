@@ -91,11 +91,10 @@ module.exports = {
     try {
       const user = await User.findOne({ email });
 
-      console.log('1111111InputPassword:', password, 'userPassword:', user);
       if (!user) {
         throw new Error('Some of your credentials are invalid');
       }
-      console.log('InputPassword:', password, 'userPassword:', user.password);
+
       const isValid = await bcrypt.compare(password, user.password);
       if (!isValid) {
         throw new Error('Some of your credentials are invalid');
